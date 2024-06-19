@@ -10,21 +10,21 @@ Full visualization available here:
 
 ### Full Code:
 
-```
+```SQL
 SELECT  * 
 FROM still-primer-356101.coviddeaths.coviddeaths 
 ORDER BY 3,4
 Testing another section with a code block:
 ```
 
-```
+```SQL
 SELECT  * 
 FROM still-primer-356101.coviddeaths.covidvaccinations 
 ORDER BY 3,4
 #####Select the Data we will be using for the project:
 ```
 
-```
+```SQL
 SELECT  location, date, total_cases, new_cases, total_deaths, population
 FROM still-primer-356101.coviddeaths.coviddeaths 
 ORDER BY 1,2
@@ -32,7 +32,7 @@ ORDER BY 1,2
 
 Looking at Total Cases vs Total Deaths Shows likelihood of dying if you contract covid in your country
 
-```
+```SQL
 SELECT  location, date, total_cases, total_deaths, (total_deaths/total_cases)*100 AS DeathPercentage
 FROM still-primer-356101.coviddeaths.coviddeaths
 WHERE location = 'United States'
@@ -41,7 +41,7 @@ ORDER BY 1,2
 
 Looking at total cases vs. the population Shows what percentage of population got Covid
 
-```
+```SQL
 SELECT  location, date, population, total_cases, (total_cases/population)*100 AS InfectionPercentagePopulution
 FROM still-primer-356101.coviddeaths.coviddeaths
 WHERE location = 'United States'
@@ -50,7 +50,7 @@ ORDER BY 1,2
 
 Looking at countries with the highest infection rate paired to population
 
-```
+```SQL
 SELECT  location, population, MAX(total_cases) AS HighestInfectionCount, (MAX(total_cases/population))*100 AS InfectionPercentagePopulation
 FROM still-primer-356101.coviddeaths.coviddeaths
 WHERE location = 'United States'
@@ -60,7 +60,7 @@ ORDER BY InfectionPercentagePopulation DESC
 
 Showing Countries with Highest Death Count per Population
 
-```
+```SQL
 SELECT  location, MAX(cast(total_deaths as int)) AS TotalDeathCount
 FROM still-primer-356101.coviddeaths.coviddeaths
 WHERE location = 'United States'
